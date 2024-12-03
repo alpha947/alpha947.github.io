@@ -1,0 +1,22 @@
+{
+    "name": "Clic To Coorporation",
+    "short_name": "CTC",
+    "description": "C'est l'application principales de toutes mes autres apps.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6DB33F",
+    "icons": [
+      {
+        "src": "icons/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "icons/icon-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
