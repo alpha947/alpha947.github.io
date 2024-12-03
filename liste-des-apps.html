@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTC | Apps</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .app-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+        }
+
+        .app-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-card img {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .app-card .app-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .app-card .app-description {
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="index.html" class="btn btn-outline-success">
+                <i class="fas fa-home"></i> Acceuil
+            </a>
+            <h1 class="text-center mb-8">Our Solutions</h1>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <!-- Search Input -->
+        <div class="mb-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Rechercher une application...">
+        </div>
+
+        <!-- Applications List -->
+        <div id="applicationsList" class="row">
+            <!-- Les cartes d'application seront injectées ici -->
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script pour la logique -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Liste fictive des applications
+            const applications = [
+                {
+                    id: 1,
+                    name: 'Inventory Manager',
+                    logo: 'https://via.placeholder.com/50/6DB33F/FFFFFF?text=IM',
+                    description: 'Gérez efficacement votre inventaire.',
+                    link: 'https://inventory.example.com'
+                },
+                {
+                    id: 2,
+                    name: 'HR Suite',
+                    logo: 'https://via.placeholder.com/50/6DB33F/FFFFFF?text=HR',
+                    description: 'Simplifiez la gestion des ressources humaines.',
+                    link: 'https://hr.example.com'
+                },
+                {
+                    id: 3,
+                    name: 'Finance Tracker',
+                    logo: 'https://via.placeholder.com/50/6DB33F/FFFFFF?text=FT',
+                    description: 'Suivez et analysez vos finances en temps réel.',
+                    link: 'https://finance.example.com'
+                }
+            ];
+
+            const applicationsList = document.getElementById('applicationsList');
+            const searchInput = document.getElementById('searchInput');
+
+            // Fonction pour afficher les applications
+            function displayApplications(apps) {
+                applicationsList.innerHTML = '';
+                apps.forEach(app => {
+                    const appCard = document.createElement('div');
+                    appCard.className = 'col-md-4';
+                    appCard.innerHTML = `
+                        <div class="app-card" data-url="${app.link}">
+                            <div class="d-flex align-items-center">
+                                <img src="${app.logo}" alt="${app.name}" class="rounded-circle">
+                                <div>
+                                    <div class="app-title">${app.name}</div>
+                                    <div class="app-description">${app.description}</div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    // Ajouter un événement de clic pour ouvrir l'application
+                    appCard.querySelector('.app-card').addEventListener('click', () => {
+                        window.open(app.link, '_blank');
+                    });
+                    applicationsList.appendChild(appCard);
+                });
+            }
+
+            // Afficher toutes les applications au chargement
+            displayApplications(applications);
+
+            // Fonction de recherche
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase();
+                const filteredApps = applications.filter(app =>
+                    app.name.toLowerCase().includes(query) ||
+                    app.description.toLowerCase().includes(query)
+                );
+                displayApplications(filteredApps);
+            });
+        });
+    </script>
+</body>
+
+</html>

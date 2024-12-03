@@ -190,6 +190,18 @@
         .select2-container {
             width: 100% !important;
         }
+
+        /* pour que le liens soit en noir */
+        .feature-link {
+            text-decoration: none;
+            color: inherit;
+            /* Hérite de la couleur du parent */
+        }
+
+        .feature-link:hover {
+            color: inherit;
+            /* Assure que la couleur reste noire au survol */
+        }
     </style>
 </head>
 
@@ -265,12 +277,16 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="feature-card">
-                        <div class="icon"><i class="fas fa-code"></i></div>
-                        <h5>Web Development</h5>
-                        <p>Create modern, responsive, and robust web applications.</p>
-                    </div>
+                    <a href="liste-des-apps.html" class="feature-link">
+                        <div class="feature-card" style="cursor: pointer;">
+                            <div class="icon"><i class="fas fa-code"></i></div>
+                            <h5>Web Development</h5>
+                            <p>Create modern, responsive, and robust web applications.</p>
+                        </div>
+                    </a>
                 </div>
+
+
             </div>
         </div>
     </section>
