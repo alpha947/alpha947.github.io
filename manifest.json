@@ -1,7 +1,7 @@
 {
     "name": "Clic To Coorporation",
     "short_name": "CTC",
-    "description": "C'est l'application principales de toutes mes autres apps.",
+    "description": "C'est le pannel du recumé de mon business",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -18,5 +18,5 @@
         "type": "image/png"
       }
     ]
-  }
+     }
   
